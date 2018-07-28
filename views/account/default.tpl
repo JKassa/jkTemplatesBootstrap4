@@ -70,6 +70,13 @@
 		</a>
 	</li>
 	{% endif %}
+	{% if affiliate %}
+	<li class="list-group-item">
+		<a href="{{ affiliate_route }}">
+			{{ '_' | jtext: 'COM_JKASSA_AFFILIATE_PROGRAM' }}
+		</a>
+	</li>
+	{% endif %}
 </ul>
 
 {% if posttext %}

@@ -130,7 +130,6 @@
 	
 	<!--Cost block-->
 	<div class="col-sm-5">
-		
 		{% if manufacturer %}
 		<!--Manufacturer-->
 		<div itemtype="http://schema.org/Brand" itemscope itemprop="brand">
@@ -347,6 +346,16 @@
 			{{ social }}
 		</div>
 		{% endif %}
+		
+		{% if aff_income %}
+		<!--Affiliate Links-->
+		<div class="mt-2 mb-2">
+			<a href="#" data-click="show-modal" data-id="jk-modal_affiliate" data-src="{{ aff_url }}" class="text-muted small">
+				<span class="fas fa-flag"></span>
+				<em>{{ '_' | jtext: 'COM_JKASSA_AFFILIATE_AFFILIATE_REWARD' }}: <strong>{{ aff_income | costDisplay }}{{ currency.symbol }}</strong></em>
+			</a>
+		</div>
+		{% endif %}
 	</div>
   
 	<!--Product Description (introtext)-->
@@ -463,82 +472,82 @@
 {% endif %}
 
 {% if quickview == 0 %}
-	{% if show_icons %}
-	{% if print_screen == 0 %}
-	<!--Print / Email / Edit-->
-	<div class="btn-group float-right ml-1" role="group">
-		<a class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
-			<span class="fas fa-cog"></span>
-			<span class="caret"></span>
-		</a>
-		<ul class="dropdown-menu">
-			<li class="dropdown-item">{{ print_icon }}</li>
-			<li class="dropdown-item">{{ email_icon }}</li>
-			{% if edit_icon %}
-			<li role="separator" class="dropdown-divider"></li>
-			<li class="dropdown-item">{{ edit_icon }}</li>
-			{% endif %}
-		</ul>
-	</div>
-	{% else %}
-	<!--Print-->
-	<div class="btn btn-secondary no-print" style="position: fixed; right: 10px; top: 10px">
-		{{ print_screen }}
-	</div>
-	{% endif %}
-	{% endif %}
-	
-	{% if show_info %}
-	<!--Details-->
-	<ul class="breadcrumb mt-3" style="font-size: 70%">
-		<li class="breadcrumb-item active">
-			<span class="fas fa-user"></span>
-			{{ 'sprintf' | jtext: 'COM_JKASSA_WRITTEN_BY', '' }}
-			{% if contact_link %}
-			<a href="{{ contact_link }}">{{ author }}</a>
-			{% else %}
-			{{ author }}
-			{% endif %}
-		</li>
-		{% if parent_title %}
-		<li class="breadcrumb-item active">
-			<span class="fas fa-folder"></span>
-			{% capture parent %}<a href="{{ parent_url }}">{{ parent_title }}</a>{% endcapture %}
-			{{ 'sprintf' | jtext: 'COM_JKASSA_PARENT', parent }}
-		</li>
+{% if show_icons %}
+{% if print_screen == 0 %}
+<!--Print / Email / Edit-->
+<div class="btn-group float-right ml-1" role="group">
+	<a class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+		<span class="fas fa-cog"></span>
+		<span class="caret"></span>
+	</a>
+	<ul class="dropdown-menu">
+		<li class="dropdown-item">{{ print_icon }}</li>
+		<li class="dropdown-item">{{ email_icon }}</li>
+		{% if edit_icon %}
+		<li role="separator" class="dropdown-divider"></li>
+		<li class="dropdown-item">{{ edit_icon }}</li>
 		{% endif %}
-		<li class="breadcrumb-item active">
-			<span class="fas fa-folder-open"></span>
-			{% capture category %}<a href="{{ category_url }}">{{ category_title }}</a>{% endcapture %}
-			{{ 'sprintf' | jtext: 'COM_JKASSA_CATEGORY', category }}
-		</li>
-		<li class="breadcrumb-item active">
-			<span class="fas fa-calendar"></span>
-			<time datetime="{{ 'date' | jhtml: publish, 'c' }}">
-				{% assign date_publish = 'date' | jhtml: publish, 'DATE_FORMAT_LC2' %}
-				{{ 'sprintf' | jtext: 'COM_JKASSA_PUBLISHED_DATE_ON', date_publish }}
-			</time>
-		</li>
-		<li class="breadcrumb-item active">
-			<span class="fas fa-calendar"></span>
-			<time datetime="{{ 'date' | jhtml: created, 'c' }}">
-				{% assign date_created = 'date' | jhtml: created, 'DATE_FORMAT_LC2' %}
-				{{ 'sprintf' | jtext: 'COM_JKASSA_CREATED_DATE_ON', date_created }}
-			</time>
-		</li>
-		<li class="breadcrumb-item active">
-			<span class="fas fa-calendar"></span>
-			<time datetime="{{ 'date' | jhtml: modified, 'c' }}">
-				{% assign date_modified = 'date' | jhtml: modified, 'DATE_FORMAT_LC2' %}
-				{{ 'sprintf' | jtext: 'COM_JKASSA_LAST_UPDATED', date_modified }}
-			</time>
-		</li>
-		<li class="breadcrumb-item active">
-			<span class="fas fa-eye"></span>
-			{{ 'sprintf' | jtext: 'COM_JKASSA_PRODUCT_HITS', hits }}
-		</li>
 	</ul>
+</div>
+{% else %}
+<!--Print-->
+<div class="btn btn-secondary no-print" style="position: fixed; right: 10px; top: 10px">
+	{{ print_screen }}
+</div>
+{% endif %}
+{% endif %}
+
+{% if show_info %}
+<!--Details-->
+<ul class="breadcrumb mt-3" style="font-size: 70%">
+	<li class="breadcrumb-item active">
+		<span class="fas fa-user"></span>
+		{{ 'sprintf' | jtext: 'COM_JKASSA_WRITTEN_BY', '' }}
+		{% if contact_link %}
+		<a href="{{ contact_link }}">{{ author }}</a>
+		{% else %}
+		{{ author }}
+		{% endif %}
+	</li>
+	{% if parent_title %}
+	<li class="breadcrumb-item active">
+		<span class="fas fa-folder"></span>
+		{% capture parent %}<a href="{{ parent_url }}">{{ parent_title }}</a>{% endcapture %}
+		{{ 'sprintf' | jtext: 'COM_JKASSA_PARENT', parent }}
+	</li>
 	{% endif %}
+	<li class="breadcrumb-item active">
+		<span class="fas fa-folder-open"></span>
+		{% capture category %}<a href="{{ category_url }}">{{ category_title }}</a>{% endcapture %}
+		{{ 'sprintf' | jtext: 'COM_JKASSA_CATEGORY', category }}
+	</li>
+	<li class="breadcrumb-item active">
+		<span class="fas fa-calendar"></span>
+		<time datetime="{{ 'date' | jhtml: publish, 'c' }}">
+			{% assign date_publish = 'date' | jhtml: publish, 'DATE_FORMAT_LC2' %}
+			{{ 'sprintf' | jtext: 'COM_JKASSA_PUBLISHED_DATE_ON', date_publish }}
+		</time>
+	</li>
+	<li class="breadcrumb-item active">
+		<span class="fas fa-calendar"></span>
+		<time datetime="{{ 'date' | jhtml: created, 'c' }}">
+			{% assign date_created = 'date' | jhtml: created, 'DATE_FORMAT_LC2' %}
+			{{ 'sprintf' | jtext: 'COM_JKASSA_CREATED_DATE_ON', date_created }}
+		</time>
+	</li>
+	<li class="breadcrumb-item active">
+		<span class="fas fa-calendar"></span>
+		<time datetime="{{ 'date' | jhtml: modified, 'c' }}">
+			{% assign date_modified = 'date' | jhtml: modified, 'DATE_FORMAT_LC2' %}
+			{{ 'sprintf' | jtext: 'COM_JKASSA_LAST_UPDATED', date_modified }}
+		</time>
+	</li>
+	<li class="breadcrumb-item active">
+		<span class="fas fa-eye"></span>
+		{{ 'sprintf' | jtext: 'COM_JKASSA_PRODUCT_HITS', hits }}
+	</li>
+</ul>
+{% endif %}
 
 {% if pagination and show_nav %}
 <!--Pagination-->
@@ -572,3 +581,10 @@
 	Madal body for Quick order.
 {% endcomment %}
 {{ 'renderModal' | bootstrap4: 'jk-modal_quickorder', '', 'COM_JKASSA_QUICK_ORDER', '', '', true }}
+
+{% comment %}
+  Madal body for Affiliate Links.
+{% endcomment %}
+{% if aff_income %}
+{{ 'renderModal' | bootstrap4: 'jk-modal_affiliate', '', 'COM_JKASSA_AFFILIATE_PROGRAM', '', '', true }}
+{% endif %}

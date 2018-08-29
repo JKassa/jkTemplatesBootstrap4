@@ -6,7 +6,7 @@
 
 <div class="row">
 	<div class="col-4 product-image">
-		<img {{ image | img_exists: '104x150' }} alt="{{ alias }}" />
+		<img {{ image | img_exists: '104x150' }} alt="{{ alias }}" class="img-fluid" />
 		{% if present %}
 		<!--Share (Product as a present)-->
 		<div class="share hasTooltip" title="{{ 'tooltipText' | jhtml: present.name, present.desc }}">
@@ -51,6 +51,10 @@
 			{% when 'color' %}
 			<span class="minicolors-swatch">
 				<span style="background-color: {{ variant.value }};" title="{{ variant.text }}"></span>
+			</span>
+			{% when 'texture' %}
+			<span class="minicolors-swatch">
+			    <img src="{{ variant.img }}" alt="{{ variant.alt }}" title="{{ variant.text }}">
 			</span>
 			{% when 'select' %}
 			<span>

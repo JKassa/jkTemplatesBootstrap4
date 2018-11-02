@@ -189,6 +189,39 @@
 		{% endfor %}
 	</fieldset>
 	{% endif %}
+	
+	{% if privacy %}
+	<!--Privacy Policy-->
+	<fieldset>
+		<legend>{{ privacy.legend }}</legend>
+		<div class="alert alert-info">{{ privacy.note }}</div>
+		<div class="form-group row">
+			<label class="col-sm-4" for="jk_privacy">
+				{% if privacy.article %}
+				{{ 'behavior.modal' | jhtml }}
+				<a href="#" data-click="show-modal" data-id="jk-modal_privacy" data-src="{{ privacy.article }}">
+					{{ privacy.label }}
+				</a>
+				{% else %}
+					{{ privacy.label }}
+				{% endif %}
+				<span class="text-danger">*</span>
+			</label>
+			<div class="col-sm-8">
+				<fieldset id="jk_privacy" class="required hasTooltip" required="required" aria-required="true" title="{{ privacy.desc }}">
+					<div class="form-check form-check-inline">
+						<input id="jk_privacy0" name="jk_privacy" value="1" required="" aria-required="true" type="radio" class="form-check-input">
+						<label for="jk_privacy0" class="form-check-label">{{ privacy.agree }}</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<input id="jk_privacy1" name="jk_privacy" value="0" checked="checked" required="" aria-required="true" type="radio" class="form-check-input">
+						<label for="jk_privacy1" class="form-check-label">{{ '_' | jtext: 'JNO' }}</label>
+					</div>
+				</fieldset>
+			</div>
+		</div>
+	</fieldset>
+	{% endif %}
 
 	{% if rules %}
 	<!--Shop rules-->
@@ -219,6 +252,16 @@
 </div>
 {% endif %}
 
+{% if privacy.article %}
+	<!--Madal body for Privacy-->
+	{% capture footer_modal %}
+	<button type="button" class="btn btn-secondary" data-dismiss="modal">
+		{{ '_' | jtext: 'COM_JKASSA_CLOSE' }}
+	</button>
+	{% endcapture %}
+	{{ 'renderModal' | bootstrap4: 'jk-modal_privacy', 'modal-lg', privacy.legend, '', footer_modal, true }}
+{% endif %}
+
 {% if rules %}
 	<!--Madal body for Rules-->
 	{% capture footer_modal %}
@@ -226,5 +269,5 @@
 		{{ '_' | jtext: 'COM_JKASSA_CLOSE' }}
 	</button>
 	{% endcapture %}
-	{{ 'renderModal' | bootstrap4: 'jk-modal_rules', '', 'COM_JKASSA_SHOP_RULES', rules, footer_modal }}
+	{{ 'renderModal' | bootstrap4: 'jk-modal_rules', 'modal-lg', 'COM_JKASSA_SHOP_RULES', rules, footer_modal }}
 {% endif %}

@@ -62,7 +62,7 @@
 {% endif %}
 {% endcapture %}
 
-<div id="jk-compare-module">
+<div id="jk-compare-module" class="{{ class_sfx }}">
 	<div class="jk-compare-popover">
 		<a href="javascript:;" data-toggle="popover" style="display: block; position: relative; width: 30px; height: 30px">
 			<span style="display: block; margin: 5px 0 0 5px">

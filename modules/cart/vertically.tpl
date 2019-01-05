@@ -1,7 +1,7 @@
 {{ 'stylesheet' | jhtml: 'css/style.css' }}
 {{ 'loadAll5' | fontawesome }}
 
-<div id="jk-cart-module" class="row">
+<div id="jk-cart-module" class="row {{ class_sfx }}">
 	<div class="col-12">
 		<div class="card p-0">
 			{% if image %}

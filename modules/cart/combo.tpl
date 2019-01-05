@@ -7,7 +7,7 @@
 	{% assign span = 'col-12' %}
 {% endif %}
 
-<div id="jk-cart-module" class="row mb-2">
+<div id="jk-cart-module" class="row mb-2 {{ class_sfx }}">
 	{% if image %}
 	<div class="col-3 text-center">
 		<a href="{{ url_cart }}">

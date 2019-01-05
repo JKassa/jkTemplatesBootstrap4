@@ -1,6 +1,6 @@
 {{ 'stylesheet' | jhtml: 'css/style.css' }}
 
-<div id="jk-wishlist-module">
+<div id="jk-wishlist-module" class="{{ class_sfx }}">
 	{% if products %}
 	<ul class="list-unstyled row">
 		{% for product in products %}

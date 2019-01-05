@@ -1,7 +1,7 @@
 {{ 'stylesheet' | jhtml: 'css/style.css' }}
 {{ 'tooltip' | bootstrap4 }}
 
-<div id="jk-wishlist-module">
+<div id="jk-wishlist-module" class="{{ class_sfx }}">
 	{% if image %}
 	<!--Wishlist image-->
 	<div class="text-center">

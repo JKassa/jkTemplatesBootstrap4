@@ -4,7 +4,7 @@
 	</label>
 	<div class="col-sm-8 hasTooltip"{% if field.tooltip %} title="{{ field.tooltip }}" data-placement="right"{% endif %}>
 		{% if field.required %}
-			{% assign options = 'required' | arrayCombine: 'required' %}
+			{% assign options = 'required' | arrayCombine: '' %}
 			{{ 'calendar' | jhtml: field.default, field.name, field.name, field.filter, options }}
 		{% else %}
 			{{ 'calendar' | jhtml: field.default, field.name, field.name, field.filter }}

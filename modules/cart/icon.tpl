@@ -5,7 +5,7 @@
 	HTML code for the popover window.
 {% endcomment %}
 {% capture popover_html %}
-<div class="row">
+<div class="row {{ class_sfx }}">
 	{% if image %}
 	<!--Image-->
 	<div class="col-3">

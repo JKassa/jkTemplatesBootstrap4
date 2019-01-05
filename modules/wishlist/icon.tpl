@@ -57,7 +57,7 @@
 {% endif %}
 {% endcapture %}
 
-<div id="jk-wishlist-module">
+<div id="jk-wishlist-module" class="{{ class_sfx }}">
 	<div class="jk-wishlist-popover">
 		<a href="javascript:;" data-toggle="popover" style="display: block; position: relative; width: 30px; height: 30px">
 			<span style="display: block; margin: 5px 0 0 5px">

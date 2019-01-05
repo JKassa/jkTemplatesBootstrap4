@@ -2,9 +2,12 @@
 	{% capture headingId %}headingSlider-{{ category.id }}{% endcapture %}
 	{% capture collapseId %}collapseSlider-{{ category.id }}{% endcapture %}
 	{% assign expanded = 'false' %}
-	{% if category.active %}
+	{% if category.active or category.active_parent %}
 		{% assign expanded = 'true' %}
 		{% assign active = ' show' %}
+	{% else %}
+		{% assign expanded = '' %}
+		{% assign active = '' %}
 	{% endif %}
   
  <div class="card mb-1">

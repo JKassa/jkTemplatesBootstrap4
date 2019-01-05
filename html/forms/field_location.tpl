@@ -1,4 +1,4 @@
-<fieldset class="form-group"{% if field.showon %} data-showon='{{ field.showon }}'{% endif %}>
+<fieldset id="jk_location" class="form-group"{% if field.showon %} data-showon='{{ field.showon }}'{% endif %}>
 	<div class="row">
 		<legend class="col-form-label col-sm-4">
 			{{ field.label }}{% if field.required %} <span class="text-danger">*</span>{% endif %}

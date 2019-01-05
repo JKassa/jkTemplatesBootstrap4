@@ -66,7 +66,7 @@
 
 	{% if delivery_fields %}
 	<!--Delivery fields-->
-	<fieldset class="mb-2">
+	<fieldset id="jk-order-delivery" class="mb-2">
 		<legend>{{ delivery_title }}</legend>
 		{% for delivery in delivery_fields %}
 		<div class="radio"{% if delivery.showon %} data-showon='{{ delivery.showon }}'{% endif %}>
@@ -83,6 +83,12 @@
 						{{ delivery.label }}
 					</h5>
 					
+					{% if delivery.logo %}
+					<p class="card-text">
+						<img src="{{ delivery.logo }}" alt="{{ delivery.name }}" />
+					</p>
+					{% endif %}
+					
 					{% if delivery.cost != 0.00 %}
 					<!--Cost of delivery-->
 					<p class="card-text">
@@ -90,6 +96,7 @@
 						<strong>{{ delivery.cost | costDisplay }}{{ currency.symbol }}</strong>
 					</p>
 					{% endif %}
+					
 					{% if delivery.free != 0.00 %}
 					<!--Free delivery-->
 					<p class="card-text text-info">
@@ -97,6 +104,7 @@
 						<strong>{{ delivery.free | costDisplay }}{{ currency.symbol }}</strong>
 					</p>
 					{% endif %}
+					
 					{% if delivery.tooltip %}
 					<!--Description delivery-->
 					<p class="card-text">
@@ -121,6 +129,8 @@
 										{% include 'html/forms/field_checkbox' %}
 									{% when 'calendar' %}
 										{% include 'html/forms/field_calendar' %}
+									{% when 'note' %}
+                						{% include 'html/forms/field_note' %}
 								{% endcase %}
 							{% endif %}
 						{% endfor %}
@@ -156,6 +166,7 @@
 						<img src="{{ payment.logo }}" alt="{{ payment.name }}" />
 					</p>
 					{% endif %}
+					
 					{% if payment.tooltip %}
 					<p class="card-text">
 						{{ payment.tooltip }}

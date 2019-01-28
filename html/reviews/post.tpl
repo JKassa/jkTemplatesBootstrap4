@@ -1,6 +1,6 @@
 <div id="reviewPost{{ review_id }}" class="media">
 	<!--Img-->
-	<img src="{{ user_img }}" class="mr-3" alt="{{ user_name }}" style="width: 64px; height: 64px;">
+	<img src="{{ user_img }}" class="mr-3 rounded-circle" alt="{{ user_name }}" style="width: 64px; height: 64px;">
 	<!--Body-->
 	<div class="media-body">
 		<!--Name / Rating / Date-->

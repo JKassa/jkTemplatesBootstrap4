@@ -2,5 +2,5 @@
 	<span class="review-star review-star-{{ rating }}"></span>
 </span>
 <small class="float-right">
-	{{ 'plural' | jtext: 'COM_JKASSA_REVIEWS_COUNT', rating_count }}
+	&nbsp;{{ 'plural' | jtext: 'COM_JKASSA_REVIEWS_COUNT', rating_count }}
 </small>

@@ -24,7 +24,11 @@
 	<div class="form-row align-items-center mb-3">
 		<div class="col-12 text-right">
 			{{ '_' | jtext: 'JGLOBAL_DISPLAY_NUM' }}
-			{{ limit }}
+			<select onchange="this.form.submit()" name="limit" title="{{ '_' | jtext: 'JSHOW' }}" class="custom-select custom-select-sm" style="width: auto;">
+				{% for limit in limits %}
+				<option value="{{ limit.value }}"{{ limit.selected }}>{{ limit.title }}</option>
+				{% endfor %}
+			</select>
 		</div>
 	</div>
 	{% for item in items %}
@@ -36,10 +40,11 @@
 			<h5 class="mt-0">
 				<a href="{{ item.url }}">
 					{{ item.name }}
-					<small class="text-muted">
-						({{ 'plural' | jtext: 'COM_JKASSA_PRODUCTS_QUANTITY', item.products_quantity }})
-					</small>
 				</a>
+				&nbsp;
+				<small class="text-muted">
+					({{ 'plural' | jtext: 'COM_JKASSA_PRODUCTS_QUANTITY', item.products_quantity }})
+				</small>
 			</h5>
 			{{ item.introtext }}
 		</div>

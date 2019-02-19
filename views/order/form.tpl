@@ -59,6 +59,8 @@
 					{% include 'html/forms/field_url' %}
 				{% when 'calendar' %}
 					{% include 'html/forms/field_calendar' %}
+				{% when 'note' %}
+					{% include 'html/forms/field_note' %}
 			{% endcase %}
 		{% endfor %}
 	</fieldset>
@@ -130,7 +132,9 @@
 									{% when 'calendar' %}
 										{% include 'html/forms/field_calendar' %}
 									{% when 'note' %}
-                						{% include 'html/forms/field_note' %}
+										{% include 'html/forms/field_note' %}
+									{% when 'html' %}
+										{% include 'html/forms/field_html' %}
 								{% endcase %}
 							{% endif %}
 						{% endfor %}
@@ -179,17 +183,21 @@
 							{% if field.payment == payment.name %}
 								{% case field.type %}
 									{% when 'text' %}
-								{% include 'html/forms/field_text' %}
+										{% include 'html/forms/field_text' %}
 									{% when 'textarea' %}
-								{% include 'html/forms/field_textarea' %}
+										{% include 'html/forms/field_textarea' %}
 									{% when 'select' %}
-								{% include 'html/forms/field_select' %}
+										{% include 'html/forms/field_select' %}
 									{% when 'radio' %}
-								{% include 'html/forms/field_radio' %}
+										{% include 'html/forms/field_radio' %}
 									{% when 'checkbox' %}
-								{% include 'html/forms/field_checkbox' %}
+										{% include 'html/forms/field_checkbox' %}
 									{% when 'calendar' %}
-								{% include 'html/forms/field_calendar' %}
+										{% include 'html/forms/field_calendar' %}
+									{% when 'note' %}
+										{% include 'html/forms/field_note' %}
+									{% when 'html' %}
+										{% include 'html/forms/field_html' %}
 								{% endcase %}
 							{% endif %}
 						{% endfor %}

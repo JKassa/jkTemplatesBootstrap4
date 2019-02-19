@@ -8,14 +8,11 @@
 	{% when 'error' %}
 		{% assign class = ' alert-danger' %}
 	{% else %}
-		{% assign class = ' alert-warning' %}
+		{% assign class = ' alert-dark' %}
 {% endcase %}
-<div class="form-group row"{% if field.showon %} data-showon='{{ field.showon }}'{% endif %}>
-	<div class="alert{{ class }}">
+<div class="form-group mb-0"{% if field.showon %} data-showon='{{ field.showon }}'{% endif %}>
+	<div class="alert{{ class }}" role="alert">
 		{% if field.label %}<h4>{{ field.label }}</h4>{% endif %}
 		{{ field.tooltip }}
-		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		</button>
 	</div>
 </div>

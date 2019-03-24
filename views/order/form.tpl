@@ -148,7 +148,7 @@
 
 	{% if payment_fields %}
 	<!--Payment fields-->
-	<fieldset class="mb-2">
+	<fieldset id="jk-order-payment" class="mb-2">
 		<legend>{{ payment_title }}</legend>
 		{% for payment in payment_fields %}
 		<div class="radio"{% if payment.showon %} data-showon='{{ payment.showon }}'{% endif %}>

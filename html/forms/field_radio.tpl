@@ -3,7 +3,7 @@
 		{{ field.label }}{% if field.required %} <span class="text-danger">*</span>{% endif %}
 	</label>
 	<div class="col-sm-8">
-		<span{% if field.tooltip %} class="hasTooltip" title="{{ field.tooltip }}" data-placement="right"{% endif %}>
+		<span{% if field.tooltip %} class="hasPopover" title="{{ field.label }}" data-content="{{ field.tooltip }}" data-placement="top"{% endif %}>
 			{% for val in field.values %}
 			<div class="radio">
 				<label>

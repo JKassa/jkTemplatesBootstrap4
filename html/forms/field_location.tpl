@@ -3,7 +3,7 @@
 		<legend class="col-form-label col-sm-4">
 			{{ field.label }}{% if field.required %} <span class="text-danger">*</span>{% endif %}
 		</legend>
-		<div id="{{ field.name }}" class="col-sm-8">
+		<div id="{{ field.name }}" class="col-sm-8 hasPopover" title="{{ field.label }}" data-content="{{ field.tooltip }}" data-placement="top">
 			<div class="" id="locations_countries_wrapper">
 				<label for="locations_countries" style="display:none">{{ '_' | jtext: 'COM_JKASSA_COUNTRY' }}</label>
 				<select name="locations_countries" id="locations_countries" class="custom-select"{% if field.required %} required{% endif %}>

@@ -16,7 +16,7 @@
 				>
 				{{ value }}
 				{% if field.tooltip %}
-				<span class="fas fa-info-circle hasTooltip" title="{{ field.tooltip }}" data-placement="right"></span>
+				<span class="fas fa-info-circle hasPopover" title="{{ field.label }}" data-content="{{ field.tooltip }}" data-placement="top"></span>
 				{% endif %}
 			</label>
 		</div>

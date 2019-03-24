@@ -4,6 +4,7 @@
 {{ 'stylesheet' | jhtml: 'css/style.css' }}
 {{ 'script' | jhtml: 'js/template.js' }}
 {{ 'tooltip' | bootstrap4 }}
+{{ 'popover' | bootstrap4 }}
 {{ 'loadAll5' | fontawesome }}
 
 {% comment %}
@@ -169,7 +170,7 @@
 			{% if files %}
 			<!--Files-->
 			<small class="text-muted hasTooltip" title="<strong>{{ '_' | jtext: 'COM_JKASSA_ATTACHMENT' }}:</strong><br>{{ files | join: '<br>' }}">
-				<span class="fas fa-download small"></span>
+				<i class="fas fa-download" style="font-size: 14px;"></i>
 			</small>
 			{% endif %}
 		</h1>

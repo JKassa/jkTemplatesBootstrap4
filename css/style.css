@@ -170,6 +170,7 @@ del { font-size: 12px; }
 	line-height: 10px;
     padding: 3px;
 }
+.variant-radio-value > span { margin-top: -2px }
 /* Minicolors */
 .minicolors-swatch {
     background: rgba(0, 0, 0, 0) url("../../../media/jui/img/jquery.minicolors.png") repeat scroll -80px 0;
@@ -182,6 +183,7 @@ del { font-size: 12px; }
 	overflow: hidden;
 }
 .minicolors-swatch img {
+	position: absolute;
     max-width: none;
 }
 .small > .minicolors-swatch, small > .minicolors-swatch {

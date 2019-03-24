@@ -16,7 +16,11 @@ jQuery(document).ajaxComplete(function(event, xhr, settings)
 	if (settings === undefined) { return false; }
 	
 	jQuery(function () {
-		jQuery('.hasTooltip').tooltip();
+		jQuery('.hasTooltip').tooltip({"container":"body","html":true,"trigger":"hover focus","offset":"0 0"});
+	});
+	
+	jQuery(function () {
+		jQuery('.hasPopover').popover({"container":"body","html":true,"trigger":"hover focus","constraints":{"to":"scrollParent","attachment":"together","pin":true},"offset":"0,0"});
 	});
 });
 

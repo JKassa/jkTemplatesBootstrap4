@@ -1,56 +1,53 @@
 {% for variant in variants %}
-<div class="form-row">
-	<div class="col-auto">
-		<label>{{ variant.name }}</label>
+<div class="form-inline">
+	<label class="my-1 mr-2">{{ variant.name }}</label>
 
-		{% case variant.type %} 
+	{% case variant.type %} 
 
-		{% when 'select' %}
-		<!--Drop-down list-->
-		<select data-select="variant-select" name="variant-{{ product }}-{{ variant.id }}" class="custom-select custom-select-sm">
-			{% for attribute in variant.attributes %}
-			<option value="{{ attribute.value }}" data-attr-title="{{ attribute.title }}"{% if attribute.default %} selected{% endif %}>
-				{{ attribute.value }}
-			</option>
-			{% endfor %}
-		</select>
-
-		{% when 'radio' %}
-		<!--Group switches-->
+	{% when 'select' %}
+	<!--Drop-down list-->
+	<select data-select="variant-select" name="variant-{{ product }}-{{ variant.id }}" class="custom-select custom-select-sm my-1 mr-sm-2">
 		{% for attribute in variant.attributes %}
-		<label class="variant-radio-value">
-			<input type="radio" data-checked="variant-radio" data-attr-title="{{ attribute.title }}" name="variant-{{ product }}-{{ variant.id }}" value="{{ attribute.value }}"{% if attribute.default %} checked{% endif %}>
+		<option value="{{ attribute.value }}" data-attr-title="{{ attribute.title }}"{% if attribute.default %} selected{% endif %}>
 			{{ attribute.value }}
-		</label>
+		</option>
 		{% endfor %}
+	</select>
 
-		{% when 'color' %}
-		<!--Сolor switches-->
-		{% for attribute in variant.attributes %}
-		<label class="minicolors-swatch{% if attribute.default %} main{% endif %}" title="{{ attribute.title }}">
-			<input type="radio" data-checked="variant-color" data-attr-title="{{ attribute.title }}" name="variant-{{ product }}-{{ variant.id }}" value="{{ attribute.value }}"{% if attribute.default %} checked{% endif %}>
-			<span style="background-color: {{ attribute.value }};"></span>
-		</label>
-		{% endfor %}
-		
-		{% when 'texture' %}
-		<!--Texture switches-->
-		{% for attribute in variant.attributes %}
-		<label class="minicolors-swatch{% if attribute.default %} main{% endif %}" title="{{ attribute.title }}">
-			<input type="radio" data-checked="variant-texture" data-attr-title="{{ attribute.title }}" name="variant-{{ product }}-{{ variant.id }}" value="{{ attribute.value }}"{% if attribute.default %} checked{% endif %}>
-			<img src="{{ attribute.img }}" alt="{{ attribute.alt }}">
-		</label>
-		{% endfor %}
+	{% when 'radio' %}
+	<!--Group switches-->
+	{% for attribute in variant.attributes %}
+	<label class="variant-radio-value my-1 mr-sm-1">
+		<input type="radio" class="mr-sm-1" data-checked="variant-radio" data-attr-title="{{ attribute.title }}" name="variant-{{ product }}-{{ variant.id }}" value="{{ attribute.value }}"{% if attribute.default %} checked{% endif %}>
+		<span>{{ attribute.value }}</span>
+	</label>
+	{% endfor %}
 
-		{% endcase %}
-	</div>
+	{% when 'color' %}
+	<!--Сolor switches-->
+	{% for attribute in variant.attributes %}
+	<label class="minicolors-swatch my-1 mr-sm-1{% if attribute.default %} main{% endif %}" title="{{ attribute.title }}">
+		<input type="radio" data-checked="variant-color" data-attr-title="{{ attribute.title }}" name="variant-{{ product }}-{{ variant.id }}" value="{{ attribute.value }}"{% if attribute.default %} checked{% endif %}>
+		<span style="background-color: {{ attribute.value }};"></span>
+	</label>
+	{% endfor %}
+
+	{% when 'texture' %}
+	<!--Texture switches-->
+	{% for attribute in variant.attributes %}
+	<label class="minicolors-swatch my-1 mr-sm-1{% if attribute.default %} main{% endif %}" title="{{ attribute.title }}">
+		<input type="radio" data-checked="variant-texture" data-attr-title="{{ attribute.title }}" name="variant-{{ product }}-{{ variant.id }}" value="{{ attribute.value }}"{% if attribute.default %} checked{% endif %}>
+		<img src="{{ attribute.img }}" alt="{{ attribute.alt }}">
+	</label>
+	{% endfor %}
+
+	{% endcase %}
+
 	{% if variant.tooltip %}
-	<div class="col-auto">
-		<!--Tooltip-->
-		<span class="hasTooltip" title="{{ variant.tooltip }}">
-			<span class="fas fa-question-circle"></span>
-		</span>
-	</div>
+	<!--Tooltip-->
+	<span class="hasPopover" title="{{ variant.name }}" data-content="{{ variant.tooltip }}" data-placement="top">
+		<span class="fas fa-question-circle"></span>
+	</span>
 	{% endif %}
 </div>
 {% endfor %}

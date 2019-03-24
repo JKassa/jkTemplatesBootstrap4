@@ -9,7 +9,7 @@
 <div class="dropdown-menu" aria-labelledby="dropdownCurrencies">
 	{% for currency in currencies %}
 	{% if currency.id != active_id %}
-	<a href="{{ currency.url }}" class="dropdown-item">
+	<a href="{{ currency.url }}" class="dropdown-item" rel="nofollow">
 		<img src="{{ currency.image }}" alt="{{ currency.code }}" title="{{ currency.title }}" />
 		{{ currency.title }} <small>({{ currency.symbol }})</small>
 	</a>

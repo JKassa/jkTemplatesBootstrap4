@@ -9,7 +9,7 @@
 			placeholder="{{ field.placeholder }}"
 			{% if field.required %} required{% endif %}
 			{% if field.readonly %} readonly{% endif %}
-			{% if field.tooltip %} class="form-control hasTooltip" title="{{ field.tooltip }}" data-placement="right"{% else %} class="form-control"{% endif %}
+			{% if field.tooltip %} class="form-control hasPopover" title="{{ field.label }}" data-content="{{ field.tooltip }}" data-placement="top"{% else %} class="form-control"{% endif %}
 		>{{ field.default }}</textarea>
 	</div>
 </div>

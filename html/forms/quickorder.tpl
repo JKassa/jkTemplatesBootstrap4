@@ -40,26 +40,26 @@
 		</div>
 
 		{% if variants %}
-		<div class="mt-2">
+		<div class="small mt-2">
 			{% for variant in variants %}
 			{{ variant.name }}:
 			{% case variant.type %}
 			{% when 'radio' %}
 			<span class="variant-radio-value">
 				{{ variant.text }}
-			</span>
+			</span><br>
 			{% when 'color' %}
 			<span class="minicolors-swatch">
 				<span style="background-color: {{ variant.value }};" title="{{ variant.text }}"></span>
-			</span>
+			</span><br>
 			{% when 'texture' %}
 			<span class="minicolors-swatch">
 			    <img src="{{ variant.img }}" alt="{{ variant.alt }}" title="{{ variant.text }}">
-			</span>
+			</span><br>
 			{% when 'select' %}
 			<span>
 				{{ variant.text }}
-			</span>
+			</span><br>
 			{% endcase %}
 			{% endfor %}
 		</div>

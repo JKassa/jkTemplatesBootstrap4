@@ -225,7 +225,7 @@
 
 			{% if product.cart_disabled != 'false' and show_quantity %}
 			<!--Quantity-->
-			<div class="input-group qty-product p-0 col-3 col-sm-7" style="margin: 10px auto !important">
+			<div class="input-group qty-product p-0 col-3 col-sm-7" style="width: 100px; margin: 10px auto !important;">
 				<div class="input-group-prepend">
 					<a href="javascript:;" class="btn btn-secondary btn-sm" type="button" data-click="qty-minus" data-id="{{ product.id }}" title="{{ '_' | jtext: 'COM_JKASSA_QTY_BTN' }}">&minus;</a>
 				</div>

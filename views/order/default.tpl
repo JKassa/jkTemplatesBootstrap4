@@ -4,6 +4,7 @@
 {{ 'stylesheet' | jhtml: 'css/style.css' }}
 {{ 'script' | jhtml: 'js/template.js' }}
 {{ 'tooltip' | bootstrap4 }}
+{{ 'popover' | bootstrap4 }}
 
 <!--Header-->
 {% if heading %}

@@ -15,27 +15,25 @@
 		<div class="carousel-item{% if active == 1 %} active{% endif %}">
 			<ul class="row list-unstyled">
 				{% for product in row %}
-				<li itemscope itemtype="http://schema.org/Product" class="col-12 col-sm-6 col-md-3">
+				<li class="col-12 col-sm-6 col-md-3">
 					<div class="card">
 						<div style="{{ block_height }}">
 							{% if product.image %}
 							<div class="product-image text-center">
-								<a itemprop="url" href="{{ product.url }}" title="{{ product.name }}">
-									<img itemprop="image" src="{{ product.image }}" alt="{{ product.alias }}" style="{{ img_height }}" />
+								<a href="{{ product.url }}" title="{{ product.name }}">
+									<img src="{{ product.image }}" alt="{{ product.alias }}" style="{{ img_height }}" />
 								</a>
 							</div>
 							{% endif %}
 							<div class="card-body p-2">
 								<div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap">
-									<a itemprop="url" href="{{ product.url }}" title="{{ product.name }}">
-										<span itemprop="name">{{ product.name }}</span>
+									<a href="{{ product.url }}" title="{{ product.name }}">
+										{{ product.name }}
 									</a>
 								</div>
 								{% if product.introtext %}
 								<div class="mt-1" style="font-size: 11px; line-height: 14px">
-									<span itemprop="description">
-										{{ product.introtext | truncateDesc: 35 }}
-									</span>
+									{{ product.introtext | truncateDesc: 35 }}
 								</div>
 								{% endif %}
 								{% if product.cost and product.old_cost %}
@@ -45,11 +43,9 @@
 						</div>
 						<div class="card-body p-2">
 							{% if product.cost %}
-							<div class="mt-1" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+							<div class="mt-1">
 								<span class="cost">
-									<meta itemprop="priceCurrency" content="{{ currency.code }}">
-									{% assign options = 'dec_point,thousands_sep' | arrayCombine: '.', '*' %}
-									<span itemprop="price" content="{{ product.cost | costDisplay: options }}">{{ product.cost | costDisplay }}</span>{{ currency.symbol }}
+									<span>{{ product.cost | costDisplay }}</span>{{ currency.symbol }}
 								</span>
 							</div>
 							{% endif %}
@@ -101,7 +97,7 @@
 							<div class="btn-group mt-1">
 								{% if readmore %}
 								<!--More-->
-								<a itemprop="url" class="btn btn-secondary btn-sm" href="{{ product.url }}">
+								<a class="btn btn-secondary btn-sm" href="{{ product.url }}">
 									<span class="fas fa-arrow-circle-right"></span>
 									{% if btns == 1 %}{{ '_' | jtext: 'JGLOBAL_DESCRIPTION' }}{% endif %}
 								</a>

@@ -33,11 +33,13 @@
 			</small>
 			{% endif %}
 		</h4>
-
+		
+		{% if sku %}
 		<!--SKU (code)-->
 		<div class="text-muted small mt-1">
 			{{ '_' | jtext: 'COM_JKASSA_SKU' }}: {{ sku }}
 		</div>
+		{% endif %}
 
 		{% if variants %}
 		<div class="small mt-2">

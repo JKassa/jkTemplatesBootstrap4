@@ -64,10 +64,13 @@
 	<!--Product image-->
 	<div class="col-6 col-sm-2">
 		<div class="product-image">
-			{% if product.discount %}
+			{% if product.d_simple %}
 			<ul class="stickers">
 				<li>
-					<span class="product-label">-{{ product.discount | costDisplay }}{{ product.d_symbol }}</span>
+					<span class="product-label">
+						{% assign options = 'decimals' | arrayCombine: 0 %}
+						-{{ product.d_simple.value | costDisplay: options }}{% if product.d_simple.symbol == '%' %}{{ product.d_simple.symbol }}{% endif %}
+					</span>
 				</li>
 			</ul>
 			{% endif %}
@@ -149,6 +152,20 @@
 			{% endif %}
 			<!--cost-->
 			{{ product.cost | costDisplay }}{{ currency.symbol }}
+			{% if product.d_coupon %}
+			<!--Promotional code-->
+			<br>
+			<span class="text-danger small">
+				<strong>{{ product.d_coupon.name }}</strong>:
+				-{{ product.d_coupon.difference | costDisplay }}{{ currency.symbol }}
+				{% if product.d_coupon.symbol == '%' %}
+				<em>({{ product.d_coupon.value }}%)</em>
+				{% endif %}
+				{% if product.d_coupon.desc %}
+				<span class="fas fa-info-circle hasTooltip" title="{{ product.d_coupon.desc }}"></span>
+				{% endif %}
+			</span>
+			{% endif %}
 		</div>
 	</div>
 	<!--Quantity-->
@@ -260,19 +277,6 @@
 				<span class="hasTooltip" title="{{ discounts.sum.desc }}">
 					<i class="fas fa-info-circle"></i>
 				</span>
-				{% endif %}
-			</div>
-			{% endif %}
-			{% if discounts.code %}
-			<!--Discount code-->
-			<div class="col-7"><strong>{{ discounts.code.name }}:</strong></div>
-			<div class="col-5">
-				-{{ discounts.code.difference | costDisplay }}{{ currency.symbol }}
-				{% if discounts.code.percent %}
-				<em>({{ discounts.code.discount }}%)</em>
-				{% endif %}
-				{% if discounts.code.desc %}
-				<span class="fas fa-info-circle hasTooltip" title="{{ discounts.code.desc }}"></span>
 				{% endif %}
 			</div>
 			{% endif %}

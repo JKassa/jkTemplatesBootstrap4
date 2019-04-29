@@ -25,7 +25,8 @@
 			</button>
 		</div>
 	</div>
-  
+	
+	{% if search_phrases %}
     <!--Filter search-->
 	<div class="mt-3">
 		<div class="form-check form-check-inline">
@@ -47,7 +48,8 @@
 			</label>
 		</div>
 	</div>
-    
+    {% endif %}
+	
     {% if searchareas %}
 	<div class="mt-2">
 		{% for areas in searchareas %}

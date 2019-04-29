@@ -84,7 +84,7 @@
 {% endif %}
 {% else %}
 <!--No Matching Results-->
-<div class="alert alert-warning">
+<div class="alert alert-warning mt-3">
 	{{ '_' | jtext: 'COM_JKASSA_NO_MATCHING_RESULTS' }}
 </div>
 {% endif %}

@@ -1,6 +1,6 @@
 <ul class="list-unstyled list-products">
 	{% for product in products %}
-	<li class="row mb-4" itemtype="http://schema.org/Product" itemscope>
+	<li class="row mb-4">
 		<div class="col-6 col-sm-3">
 			<div class="product-image">
 				{% if product.stickers %}
@@ -33,9 +33,8 @@
 
 				{% if product.manufacturer %}
 				<!--Manufacturer name and miniature-->
-				<div style="position: absolute; right:0; top:0;" itemtype="http://schema.org/Brand" itemscope itemprop="brand">
-					<span style="display: none;" itemprop="name">{{ product.manufacturer.name }}</span>
-					<img {{ product.manufacturer.thumbnail | img_exists: '30x30' }} class="manufacturer hasTooltip" itemprop="logo" alt="{{ product.manufacturer.alias }}" title="{{ product.manufacturer.name }}">
+				<div style="position: absolute; right:0; top:0;">
+					<img {{ product.manufacturer.thumbnail | img_exists: '30x30' }} class="manufacturer hasTooltip" alt="{{ product.manufacturer.alias }}" title="{{ product.manufacturer.name }}">
 				</div>
 				{% endif %}
 
@@ -90,7 +89,7 @@
 			<!--Name and URL of the product-->
 			<h5 class="mt-2">
 				<a href="{{ product.url }}" target="_top">
-					<span itemprop="name">{{ product.name }}</span>
+					{{ product.name }}
 				</a>
 				{% if product.files %}
 
@@ -128,15 +127,12 @@
 			<!--SKU (code)-->
 			<div class="text-muted text-right">
 				<small>
-					{{ '_' | jtext: 'COM_JKASSA_SKU' }}:
-					<span itemprop="mpn">
-						{{ product.sku }}
-					</span>
+					{{ '_' | jtext: 'COM_JKASSA_SKU' }}: {{ product.sku }}
 				</small>
 			</div>
 
 			<!--Product Description (introtext)-->
-			<div itemprop="description">
+			<div>
 				{{ product.introtext | truncateDesc: 140 }}
 			</div>
 
@@ -152,7 +148,7 @@
 
 			<!--More-->
 			<div class="mt-2">
-				<a href="{{ product.url }}" class="btn btn-sm btn-outline-secondary" title="{{ 'sprintf' | jtext: 'COM_JKASSA_READ_MORE', product.name }}" itemprop="url" target="_top">
+				<a href="{{ product.url }}" class="btn btn-sm btn-outline-secondary" title="{{ 'sprintf' | jtext: 'COM_JKASSA_READ_MORE', product.name }}" target="_top">
 					{{ '_' | jtext: 'JGLOBAL_DESCRIPTION' }} <span class="fas fa-arrow-circle-right"></span>
 				</a>
 
@@ -169,7 +165,7 @@
 		</div>
 		<div class="col-6 col-sm-3 col-sm-push-6 text-center">
 			<!--Price the product-->
-			<div class="mt-2" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+			<div class="mt-2">
 				<!--old cost-->
 				{% if product.old_cost %}
 				<del class="text-muted">{{ product.old_cost | costDisplay }}{{ currency.symbol }}</del>
@@ -178,9 +174,7 @@
 
 				<!--cost-->
 				<span class="cost">
-					<meta itemprop="priceCurrency" content="{{ currency.code }}" />
-					{% assign options = 'dec_point,thousands_sep' | arrayCombine: '.', '*' %}
-					<span itemprop="price" content="{{ product.cost | costDisplay: options }}">{{ product.cost | costDisplay }}</span>{{ currency.symbol }}
+					<span>{{ product.cost | costDisplay }}</span>{{ currency.symbol }}
 				</span>
 
 				{% if product.discount %}

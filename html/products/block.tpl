@@ -62,7 +62,8 @@
 							</a>
 							{% endif %}
 						</div>
-
+						
+						{% if show_view %}
 						<!--Quick view-->
 						{% capture selector_quick_view %}jk-quick_view-{{ product.id }}{% endcapture %}
 						<div class="quick-view d-none d-sm-block">
@@ -71,6 +72,7 @@
 								{{ '_' | jtext: 'COM_JKASSA_QUICK_VIEW' }}
 							</a>
 						</div>
+						{% endif %}
 
 						{% if product.present %}
 						<!--Share (Product as a present)-->
@@ -240,7 +242,9 @@
 			{% comment %}
 				Madal body for Quick view.
 			{% endcomment %}
-			{{ 'renderModal' | bootstrap4: selector_quick_view, 'modal-lg', product.name, '', '', true }}
+			{% if show_view %}
+				{{ 'renderModal' | bootstrap4: selector_quick_view, 'modal-lg', product.name, '', '', true }}
+			{% endif %}
 		</li>
 		{% endfor %}
 		{% if moreProducts %}

@@ -4,7 +4,7 @@
 	<div class="row horizontal-filters">
 		{% if filter_cost %}
 		<!--Filter cost-->
-		<div class="col-6">
+		<div class="col-12 col-sm-6 mb-3">
 			<h5>
 				{{ 'sprintf' | jtext: 'MOD_JKASSA_FILTER_COST', symbol }}
 			</h5>
@@ -26,7 +26,7 @@
 			{% endif %}
 			<!--Costs-->
 			<div class="row">
-				<div class="col-6">
+				<div class="col-6 pr-0">
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text">
@@ -36,7 +36,7 @@
 						<input type="text" id="min_cost" name="min_cost" placeholder="{{ min_default }}" class="form-control" value="{{ min_cost }}" />
 					</div>
 				</div>
-				<div class="col-6">
+				<div class="col-6 pl-0">
 					<div class="input-group">
 						<input type="text" id="max_cost" name="max_cost" placeholder="{{ max_default }}" class="form-control" value="{{ max_cost }}" />
 						<div class="input-group-append">
@@ -52,7 +52,7 @@
 
 		{% if manufacturers %}
 		<!--Filter manufacturers-->
-		<div class="col-6">
+		<div class="col-12 col-sm-6 mb-3">
 			<h5>
 				{{ '_' | jtext: 'MOD_JKASSA_FILTER_MANUFACTURERS' }}
 			</h5>
@@ -86,7 +86,7 @@
 	<div class="row horizontal-filters">
 		<!--Filter attributes-->
 		{% for attribute in attributes %}
-		<div class="col-4">
+		<div class="col-12 col-sm-4 mb-3">
 			<h5>
 				{{ attribute.name }}
 				{% if attribute.tooltip %}

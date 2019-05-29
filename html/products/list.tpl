@@ -60,7 +60,8 @@
 					</a>
 					{% endif %}
 				</div>
-
+				
+				{% if show_view %}
 				<!--Quick view-->
 				{% capture selector_quick_view %}jk-quick_view-{{ product.id }}{% endcapture %}
 				<div class="quick-view d-none d-sm-block">
@@ -69,6 +70,7 @@
 						{{ '_' | jtext: 'COM_JKASSA_QUICK_VIEW' }}
 					</a>
 				</div>
+				{% endif %}
 
 				{% if product.present %}
 				<!--Share (Product as a present)-->
@@ -85,85 +87,7 @@
 				{% endif %}
 			</div>
 		</div>
-		<div class="col-12 col-sm-6 col-sm-pull-3">
-			<!--Name and URL of the product-->
-			<h5 class="mt-2">
-				<a href="{{ product.url }}" target="_top">
-					{{ product.name }}
-				</a>
-				{% if product.files %}
-
-				<!--Files-->
-				<small class="text-muted hasTooltip" title="<strong>{{ '_' | jtext: 'COM_JKASSA_ATTACHMENT' }}:</strong><br>{{ product.files | join: '<br>' }}">
-					<span class="fas fa-download small"></span>
-				</small>
-				{% endif %}
-			</h5>
-
-			{% comment %}
-			Rating reviews JKassa or Plug-in voting (See: Plugin Manager: Plugins -> jkvotes).
-			{% endcomment %}
-			{% if reviews_included %}
-			<!--Rating reviews-->
-			<div class="text-right" title="{{ 'plural' | jtext: 'COM_JKASSA_REVIEWS_COUNT', product.rating_count }}">
-				{% for i in (1..5) %}
-				{% if product.rating >= i %}
-				<span class="fas fa-star" style="color: #F2CD00"></span>
-				{% else %}
-				<span class="far fa-star" style="color: #CCCCCC"></span>
-				{% endif %}
-				{% endfor %}
-			</div>
-			{% else %}
-			{% assign votes = product.id | jkcountervotes: product.rating, product.rating_count %}
-			{% if votes %}
-			<!--Voting-->
-			<div class="text-right">
-				{{ votes }}
-			</div>
-			{% endif %}
-			{% endif %}
-
-			<!--SKU (code)-->
-			<div class="text-muted text-right">
-				<small>
-					{{ '_' | jtext: 'COM_JKASSA_SKU' }}: {{ product.sku }}
-				</small>
-			</div>
-
-			<!--Product Description (introtext)-->
-			<div>
-				{{ product.introtext | truncateDesc: 140 }}
-			</div>
-
-			{% comment %}
-				Variants product.
-				See: html\forms\variants.tpl
-			{% endcomment %}
-			{% if product.variants %}
-			<div>
-				{{ product.variants }}
-			</div>
-			{% endif %}
-
-			<!--More-->
-			<div class="mt-2">
-				<a href="{{ product.url }}" class="btn btn-sm btn-outline-secondary" title="{{ 'sprintf' | jtext: 'COM_JKASSA_READ_MORE', product.name }}" target="_top">
-					{{ '_' | jtext: 'JGLOBAL_DESCRIPTION' }} <span class="fas fa-arrow-circle-right"></span>
-				</a>
-
-				{% comment %}
-					Connecting comments plugin.
-					See: Plugin Manager: Plugins -> jkcomments.
-				{% endcomment %}
-				{% capture title_comments %}<span class="fas fa-comment"></span> [COUNT]{% endcapture %}
-				{% assign count_comments = product.id | jkcountercomments: title_comments, product.url, 'btn btn-sm' %}
-				{% if count_comments %}
-					{{ count_comments }}
-				{% endif %}
-			</div>
-		</div>
-		<div class="col-6 col-sm-3 col-sm-push-6 text-center">
+		<div class="col-6 col-sm-3 order-sm-2 text-center">
 			<!--Price the product-->
 			<div class="mt-2">
 				<!--old cost-->
@@ -219,7 +143,7 @@
 
 			{% if product.cart_disabled != 'false' and show_quantity %}
 			<!--Quantity-->
-			<div class="input-group qty-product p-0 col-3 col-sm-7" style="width: 100px; margin: 10px auto !important;">
+			<div class="input-group qty-product p-0 col-sm-7" style="width: 100px; margin: 10px auto !important;">
 				<div class="input-group-prepend">
 					<a href="javascript:;" class="btn btn-secondary btn-sm" type="button" data-click="qty-minus" data-id="{{ product.id }}" title="{{ '_' | jtext: 'COM_JKASSA_QTY_BTN' }}">&minus;</a>
 				</div>
@@ -272,10 +196,73 @@
 				</div>
 			</div>
 		</div>
+		<div class="col-12 col-sm-6 order-sm-1">
+			<!--Name and URL of the product-->
+			<h5 class="mt-2">
+				<a href="{{ product.url }}" target="_top">
+					{{ product.name }}
+				</a>
+				{% if product.files %}
+
+				<!--Files-->
+				<small class="text-muted hasTooltip" title="<strong>{{ '_' | jtext: 'COM_JKASSA_ATTACHMENT' }}:</strong><br>{{ product.files | join: '<br>' }}">
+					<span class="fas fa-download small"></span>
+				</small>
+				{% endif %}
+			</h5>
+
+			{% comment %}
+				Rating reviews JKassa or Plug-in voting (See: Plugin Manager: Plugins -> jkvotes).
+			{% endcomment %}
+			{% if reviews_included %}
+			<!--Rating reviews-->
+			<div class="text-right" title="{{ 'plural' | jtext: 'COM_JKASSA_REVIEWS_COUNT', product.rating_count }}">
+				{% for i in (1..5) %}
+				{% if product.rating >= i %}
+				<span class="fas fa-star" style="color: #F2CD00"></span>
+				{% else %}
+				<span class="far fa-star" style="color: #CCCCCC"></span>
+				{% endif %}
+				{% endfor %}
+			</div>
+			{% else %}
+			{% assign votes = product.id | jkcountervotes: product.rating, product.rating_count %}
+			{% if votes %}
+			<!--Voting-->
+			<div class="text-right">
+				{{ votes }}
+			</div>
+			{% endif %}
+			{% endif %}
+
+			<!--SKU (code)-->
+			<div class="text-muted text-right">
+				<small>
+					{{ '_' | jtext: 'COM_JKASSA_SKU' }}: {{ product.sku }}
+				</small>
+			</div>
+
+			<!--Product Description (introtext)-->
+			<div>
+				{{ product.introtext | truncateDesc: 140 }}
+			</div>
+
+			{% comment %}
+				Variants product.
+				See: html\forms\variants.tpl
+			{% endcomment %}
+			{% if product.variants %}
+			<div>
+				{{ product.variants }}
+			</div>
+			{% endif %}
+		</div>
 		{% comment %}
 			Madal body for Quick view.
 		{% endcomment %}
-		{{ 'renderModal' | bootstrap4: selector_quick_view, 'modal-lg', product.name, '', '', true }}
+		{% if show_view %}
+			{{ 'renderModal' | bootstrap4: selector_quick_view, 'modal-lg', product.name, '', '', true }}
+		{% endif %}
 	</li>
 	{% endfor %}
 </ul>

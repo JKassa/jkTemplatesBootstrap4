@@ -155,7 +155,7 @@ ul.stickers li .product-label_hit { background-color: #5080fa; }
 /* Cost */
 del { font-size: 12px; }
 .cost { white-space: nowrap }
-.cost span { font-size: 17px; }
+.cost span { font-size: 110%; }
 /* Variant-radio-value */
 .variant-radio-value {
     background-color: #fff;
@@ -241,12 +241,7 @@ del { font-size: 12px; }
     padding: 5px;
 }
 /* Related products */
-.jk-relateds .list-unstyled > li .over-wraper { height: 210px; }
-.jk-relateds [class*="span"]:nth-child(4n+1) { margin-left: 0; }
-.jk-relateds .checkbox input[type="checkbox"] {
-	float: none;
-	margin-top: 0;
-}
+.jk-relateds .card-body { height: 150px; }
 /* Discount */
 .discount > li, .discount > div {
     height: 252px;

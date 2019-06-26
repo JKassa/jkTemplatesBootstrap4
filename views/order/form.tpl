@@ -119,6 +119,18 @@
 						{% for field in delivery_add_fields %}
 							{% if field.delivery == delivery.name %}
 								{% case field.type %}
+									{% when 'address1' %}
+										{% include 'html/forms/field_text' %}
+									{% when 'address2' %}
+										{% include 'html/forms/field_text' %}
+									{% when 'postal_code' %}
+										{% include 'html/forms/field_text' %}
+									{% when 'website' %}
+										{% include 'html/forms/field_url' %}
+									{% when 'aboutme' %}
+										{% include 'html/forms/field_textarea' %}
+									{% when 'dob' %}
+										{% include 'html/forms/field_calendar' %}
 									{% when 'text' %}
 										{% include 'html/forms/field_text' %}
 									{% when 'textarea' %}
@@ -129,6 +141,12 @@
 										{% include 'html/forms/field_radio' %}
 									{% when 'checkbox' %}
 										{% include 'html/forms/field_checkbox' %}
+									{% when 'mail' %}
+										{% include 'html/forms/field_email' %}
+									{% when 'tel' %}
+										{% include 'html/forms/field_tel' %}
+									{% when 'url' %}
+										{% include 'html/forms/field_url' %}
 									{% when 'calendar' %}
 										{% include 'html/forms/field_calendar' %}
 									{% when 'note' %}
@@ -182,6 +200,18 @@
 						{% for field in payment_add_fields %}
 							{% if field.payment == payment.name %}
 								{% case field.type %}
+									{% when 'address1' %}
+										{% include 'html/forms/field_text' %}
+									{% when 'address2' %}
+										{% include 'html/forms/field_text' %}
+									{% when 'postal_code' %}
+										{% include 'html/forms/field_text' %}
+									{% when 'website' %}
+										{% include 'html/forms/field_url' %}
+									{% when 'aboutme' %}
+										{% include 'html/forms/field_textarea' %}
+									{% when 'dob' %}
+										{% include 'html/forms/field_calendar' %}
 									{% when 'text' %}
 										{% include 'html/forms/field_text' %}
 									{% when 'textarea' %}
@@ -192,6 +222,12 @@
 										{% include 'html/forms/field_radio' %}
 									{% when 'checkbox' %}
 										{% include 'html/forms/field_checkbox' %}
+									{% when 'mail' %}
+										{% include 'html/forms/field_email' %}
+									{% when 'tel' %}
+										{% include 'html/forms/field_tel' %}
+									{% when 'url' %}
+										{% include 'html/forms/field_url' %}
 									{% when 'calendar' %}
 										{% include 'html/forms/field_calendar' %}
 									{% when 'note' %}

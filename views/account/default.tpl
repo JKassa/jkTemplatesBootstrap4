@@ -70,6 +70,14 @@
 		</a>
 	</li>
 	{% endif %}
+    {% if guest != 1 %}
+    <li class="list-group-item">
+        <a href="#" data-click="show-modal" data-id="jk-modal_reviews" data-src="{{ reviews_url }}">
+            {{ '_' | jtext: 'COM_JKASSA_YOUR_REVIEWS' }}
+            <span class="badge badge-secondary badge-pill float-right">{{ reviews_quantity }}</span>
+        </a>
+    </li>
+    {% endif %}
 	{% if affiliate %}
 	<li class="list-group-item">
 		<a href="{{ affiliate_route }}">
@@ -122,3 +130,9 @@
 {% endcomment %}
 {% capture title_orders %}{{ '_' | jtext: 'COM_JKASSA_YOUR_ORDERS' }} <span class="badge badge-secondary">{{ orders_quantity }}</span>{% endcapture %}
 {{ 'renderModal' | bootstrap4: 'jk-modal_orders', 'modal-lg', title_orders, '', '', true }}
+
+{% comment %}
+	Madal body for reviews.
+{% endcomment %}
+{% capture title_reviews %}{{ '_' | jtext: 'COM_JKASSA_YOUR_REVIEWS' }} <span class="badge badge-secondary">{{ reviews_quantity }}</span>{% endcapture %}
+{{ 'renderModal' | bootstrap4: 'jk-modal_reviews', 'modal-lg', title_reviews, '', '', true }}

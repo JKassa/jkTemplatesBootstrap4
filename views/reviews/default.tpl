@@ -6,6 +6,7 @@
 {{ 'tooltip' | bootstrap4 }}
 {{ 'loadAll5' | fontawesome }}
 
+{% if viewtmpl != 'component' %}
 {% if heading %}
 <!--Heading-->
 <h1>{{ heading }}</h1>
@@ -25,8 +26,10 @@
   {{ pretext }}
 </div>
 {% endif %}
+{% endif %}
 
 {% if reviews %}
+{% if viewtmpl != 'component' %}
 <!--Filters-->
 <form action="{{ form_action }}" method="post" name="reviewsForm" id="reviewsForm" class="mt-4">
 	<div class="align-items-center mb-3">
@@ -48,18 +51,19 @@
 		</div>
 	</div>
 </form>
+{% endif %}
 
 <!--Reviews-->
 {% for review in reviews %}
 <div class="card mb-3">
 	<div class="card-header">
 		<div class="media">
-			<a href="{{ review.product_url }}" class="mr-3">
+			<a href="{{ review.product_url }}" class="mr-3" target="_top">
 				<img class="media-object" alt="{{ review.product_alias }}" style="max-width: 64px; max-height: 64px;" src="{{ review.product_image }}">
 			</a>
 			<div class="media-body">
 				<h4 class="mt-0">
-					<a href="{{ review.product_url }}">
+					<a href="{{ review.product_url }}" target="_top">
 						{{ review.product_name }}
 					</a>
 				</h4>
